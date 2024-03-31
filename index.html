@@ -19,13 +19,22 @@
         }
     </style>
 </head>
-<body>
+<body class="fs-6">
     <nav class="navbar bg-white">
         <div class="container-fluid">
           <a class="navbar-brand" href="http://studease.lucasdebeve.fr/">
             <img src="static/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             Studease
           </a>
+          <div>
+            <span class="mx-2">Taille de la police :</span>
+            <button type="button" class="btn btn-dark" onclick="increaseFont()">
+                <span class="material-symbols-outlined">add</span>
+            </button>
+            <button type="button" class="btn btn-light" onclick="decreaseFont()">
+                <span class="material-symbols-outlined">remove</span>
+            </button>
+          </div>
         </div>
     </nav>
     <div class="container-lg">
@@ -365,6 +374,30 @@
         </div>
     </footer>
     <script>
+        function increaseFont() {
+            const fontSizeList = ["fs-6", "fs-5", "fs-4", "fs-3", "fs-2", "fs-1"];
+            const body = document.body;
+            const currentFontSize = body.classList[0];
+            const currentIndex = fontSizeList.indexOf(currentFontSize);
+            if (currentIndex < fontSizeList.length - 1) {
+                body.classList.remove(currentFontSize);
+                body.classList.add(fontSizeList[currentIndex + 1]);
+            }
+        }
+
+        function decreaseFont() {
+            const fontSizeList = ["fs-6", "fs-5", "fs-4", "fs-3", "fs-2", "fs-1"];
+            const body = document.body;
+            const currentFontSize = body.classList[0];
+            const currentIndex = fontSizeList.indexOf(currentFontSize);
+            if (currentIndex > 0) {
+                body.classList.remove(currentFontSize);
+                body.classList.add(fontSizeList[currentIndex - 1]);
+            }
+        }
+
+
+
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         tag.style = "aspect-ratio: 16/9; max-width: 1000px";
